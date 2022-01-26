@@ -1,9 +1,15 @@
+// ignore_for_file: dead_code
+
+import 'package:first_app/models/catalog.dart';
 import 'package:first_app/widgets/drawer.dart';
+import 'package:first_app/widgets/item_widget.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  final int days = 30;
-  String name = "Krish";
+  final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
+
+  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +21,11 @@ class HomePage extends StatelessWidget {
           style: TextStyle(fontSize: 25),
         ),
       ),
-      body: Center(
-        child: Text("Welcome to $days days  $name"),
-      ),
+      body: ListView.builder(
+          itemCount: dummyList.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(item: dummyList[index]);
+          }),
       drawer: MyDrawer(),
     );
   }

@@ -1,32 +1,22 @@
 import 'package:first_app/home_page.dart';
 import 'package:first_app/login_page.dart';
 import 'package:first_app/utils/routes.dart';
+import 'package:first_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Colors.white,
-          elevation: 0.0,
-          iconTheme: const IconThemeData(color: Colors.black),
-          toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
-          titleTextStyle: Theme.of(context).textTheme.headline6,
-        ),
-        primarySwatch: Colors.purple,
-        fontFamily: GoogleFonts.lato().fontFamily,
-      ),
+      theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      darkTheme: MyTheme.darkTheme(context),
       initialRoute: MyRoutes.homeRoute,
       routes: {
         "/": (context) => LoginPage(),
