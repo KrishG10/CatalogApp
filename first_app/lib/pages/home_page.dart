@@ -1,13 +1,17 @@
 import 'package:first_app/models/catalog.dart';
+import 'package:first_app/utils/routes.dart';
 import 'package:first_app/widgets/home_widgets/catalog_header.dart';
 import 'package:first_app/widgets/home_widgets/catalog_list.dart';
 import 'package:first_app/widgets/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -38,7 +42,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          // ignore: deprecated_member_use
+          backgroundColor: context.theme.buttonColor,
+          child: const Icon(CupertinoIcons.cart, color: Colors.white),
+        ),
+        backgroundColor: context.canvasColor,
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
