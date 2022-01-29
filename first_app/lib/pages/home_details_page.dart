@@ -8,13 +8,16 @@ class HomeDetailPage extends StatelessWidget {
   final Item catalog;
 
   const HomeDetailPage({Key? key, required this.catalog})
+      // ignore: unnecessary_null_comparison
       : assert(catalog != null),
         super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -30,10 +33,10 @@ class HomeDetailPage extends StatelessWidget {
                     MyTheme.darkBluishColor,
                   ),
                   shape: MaterialStateProperty.all(
-                    StadiumBorder(),
+                    const StadiumBorder(),
                   )),
-              child: "Buy".text.make(),
-            ).wh(100, 50)
+              child: "Add to cart".text.make(),
+            ).wh(130, 50)
           ],
         ).p32(),
       ),
@@ -61,6 +64,11 @@ class HomeDetailPage extends StatelessWidget {
                         .make(),
                     catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                     10.heightBox,
+                    "Sed kasd justo dolor sit sit lorem, vero sadipscing voluptua et sit dolor et et accusam at. Sit tempor eirmod eos dolore voluptua takimata lorem justo, sea sit no ut labore no erat erat. Justo vero ipsum dolore at lorem aliquyam, sea kasd diam et dolores. Eos sed sanctus consetetur."
+                        .text
+                        .textStyle(context.captionStyle)
+                        .make()
+                        .py16()
                   ],
                 ).py64(),
               ),
