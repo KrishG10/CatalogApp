@@ -1,7 +1,9 @@
 import 'package:first_app/utils/routes.dart';
 import "package:flutter/material.dart";
+// ignore: import_of_legacy_library_into_null_safe, implementation_imports
 import 'package:velocity_x/src/extensions/context_ext.dart';
 
+// ignore: use_key_in_widget_constructors
 class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();

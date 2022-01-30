@@ -1,12 +1,16 @@
 import 'package:first_app/pages/cart_page.dart';
 import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/pages/login_page.dart';
+import 'package:first_app/score/store.dart';
 import 'package:first_app/utils/routes.dart';
 import 'package:first_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(const MyApp());
+  // ignore: missing_required_param
+  runApp(VxState(store: Mystore(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

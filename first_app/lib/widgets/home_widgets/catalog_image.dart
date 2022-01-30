@@ -1,5 +1,7 @@
+// ignore: unused_import
 import 'package:first_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import "package:velocity_x/velocity_x.dart";
 
 class CatalogImage extends StatelessWidget {

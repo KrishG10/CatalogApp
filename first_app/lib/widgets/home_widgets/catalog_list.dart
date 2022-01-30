@@ -2,15 +2,18 @@
 
 import 'package:first_app/models/catalog.dart';
 import 'package:first_app/pages/home_details_page.dart';
+import 'package:first_app/widgets/home_widgets/add_to_cart.dart';
 // ignore: unused_import
 import 'package:first_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
+// ignore: import_of_legacy_library_into_null_safe, unused_import
 import 'package:first_app/models/cart.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:velocity_x/velocity_x.dart';
 
 import 'catalog_image.dart';
 
+// ignore: use_key_in_widget_constructors
 class CatalogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,7 @@ class CatalogItem extends StatelessWidget {
                 buttonPadding: EdgeInsets.zero,
                 children: [
                   "\$${catalog.price}".text.bold.xl.make(),
-                  _AddToCart(catalog: catalog)
+                  AddToCart(catalog: catalog)
                 ],
               ).pOnly(right: 8.0)
             ],
@@ -72,40 +75,5 @@ class CatalogItem extends StatelessWidget {
         ],
       ),
     ).color(context.cardColor).rounded.square(150).make().py16();
-  }
-}
-
-class _AddToCart extends StatefulWidget {
-  final Item catalog;
-  const _AddToCart({
-    Key? key,
-    required this.catalog,
-  }) : super(key: key);
-
-  @override
-  __AddToCartState createState() => __AddToCartState();
-}
-
-class __AddToCartState extends State<_AddToCart> {
-  bool isAdded = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        isAdded = isAdded.toggle();
-        final _catalog = CatalogModel();
-        final _cart = CartModel();
-        _cart.catalog = _catalog;
-        _cart.add(widget.catalog);
-        setState(() {});
-      },
-      style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(context.theme.buttonColor),
-          shape: MaterialStateProperty.all(
-            const StadiumBorder(),
-          )),
-      child: isAdded ? const Icon(Icons.done) : "Buy".text.make(),
-    );
   }
 }

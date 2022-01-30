@@ -2,11 +2,11 @@ import 'package:first_app/models/catalog.dart';
 import 'package:first_app/utils/routes.dart';
 import 'package:first_app/widgets/home_widgets/catalog_header.dart';
 import 'package:first_app/widgets/home_widgets/catalog_list.dart';
-import 'package:first_app/widgets/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
