@@ -4,6 +4,7 @@ import 'package:first_app/pages/login_page.dart';
 import 'package:first_app/score/store.dart';
 import 'package:first_app/utils/routes.dart';
 import 'package:first_app/widgets/themes.dart';
+// import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:velocity_x/velocity_x.dart';
@@ -23,7 +24,6 @@ class MyApp extends StatelessWidget {
         theme: MyTheme.lightTheme(context),
         debugShowCheckedModeBanner: false,
         darkTheme: MyTheme.darkTheme(context),
-        initialRoute: MyRoutes.homeRoute,
         routes: {
           "/": (context) => LoginPage(),
           MyRoutes.loginRoute: (context) => LoginPage(),

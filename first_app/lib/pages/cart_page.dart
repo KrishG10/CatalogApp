@@ -1,5 +1,6 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe, deprecated_member_use, duplicate_ignore
 
+import 'package:first_app/score/store.dart';
 import 'package:flutter/material.dart';
 import 'package:first_app/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -28,19 +29,22 @@ class CartPage extends StatelessWidget {
 class _CartTotal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // ignore: duplicate_ignore
-          "\$${_cart.totalPrice}"
-              .text
-              .xl5
-              // ignore: deprecated_member_use
-              .color(context.theme.accentColor)
-              .make(),
+          VxBuilder(
+            mutations: const {RemoveMutation},
+            builder: (context, _) {
+              return "\$${_cart.totalPrice}"
+                  .text
+                  .xl5
+                  .color(context.theme.accentColor)
+                  .make();
+            },
+          ),
           30.widthBox,
           ElevatedButton(
             onPressed: () {
@@ -60,9 +64,10 @@ class _CartTotal extends StatelessWidget {
 }
 
 class _CartList extends StatelessWidget {
-  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
+    VxState.listen(context, to: [RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty
         ? "Nothing to show".text.xl3.makeCentered()
         : ListView.builder(
@@ -71,9 +76,7 @@ class _CartList extends StatelessWidget {
               leading: const Icon(Icons.done),
               trailing: IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
-                onPressed: () {
-                  _cart.remove(_cart.items[index]);
-                },
+                onPressed: () => RemoveMutation(_cart.items[index]),
               ),
               title: _cart.items[index].name.text.make(),
             ),
