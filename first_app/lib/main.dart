@@ -10,7 +10,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 void main() {
   // ignore: missing_required_param
-  runApp(VxState(store: Mystore(), child: const MyApp()));
+  runApp(VxState(store: MyStore(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

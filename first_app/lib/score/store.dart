@@ -3,13 +3,13 @@ import 'package:first_app/models/catalog.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:velocity_x/velocity_x.dart';
 
-class Mystore extends VxStore {
+class MyStore extends VxStore {
+  late CatalogModel catalog;
   late CartModel cart;
-  late CartModel catalog;
 
-  Mystore() {
-    catalog = CatalogModel() as CartModel;
+  MyStore() {
+    catalog = CatalogModel();
     cart = CartModel();
-    cart.catalog = catalog as CatalogModel;
+    cart.catalog = catalog;
   }
 }
